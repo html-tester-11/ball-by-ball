@@ -1,0 +1,55 @@
+<style>
+ul#proList {
+    list-style-position: inside
+}
+
+li.item {
+    list-style: none;
+    padding: 5px;
+}
+</style>
+<div id="renderList"></div>
+<script>
+
+    var ul = document.createElement('ul');
+    ul.setAttribute('id', 'proList');
+
+    var t, tt;
+    
+
+ var json = function (_data)
+ {
+  productList = [];
+     productList .push(_data.ip);
+      productList .push(_data.country_code);
+       productList .push(_data.country_name);
+        productList .push(_data.region_code);
+         productList .push(_data.region_name);
+          productList .push(_data.city);
+           productList .push(_data.zip_code);
+            productList .push(_data.time_zone);
+             productList .push(_data.latitude);
+              productList .push(_data.longitude);
+               productList .push(_data.metro_code);
+ document.getElementById('renderList').appendChild(ul);
+    productList.forEach(renderProductList);
+
+    function renderProductList(element, index, arr) 
+    {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'item');
+
+        ul.appendChild(li);
+
+        t = document.createTextNode(element);
+
+        li.innerHTML = li.innerHTML + element;
+    }
+ }
+
+
+ 
+
+</script>
+
+  <script src='https://freegeoip.net/json/?callback=json'></script>
